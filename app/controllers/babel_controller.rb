@@ -1,13 +1,14 @@
 class BabelController < ApplicationController
   def translate_results
     @user_text = params.fetch("original_text")
+    @target_lang = params.fetch("target_language", "es")
     @recipient_number = params.fetch("send_to", false)
 
     require "google/cloud/translate"
 
     gt_client = Google::Cloud::Translate.new({ :version => :v2 })
     
-    @translated_text = gt_client.translate("Hello, world!", { :to => "es" })
+    @translated_text = gt_client.translate("Hello, world!", { :to => @target_lang })
 
     if @recipient_number.present?
       twilio_sid = ENV.fetch("TWILIO_ACCOUNT_SID")
@@ -34,6 +35,11 @@ class BabelController < ApplicationController
   end
 
   def translate_form
+    require "google/cloud/translate"
+
+    gt_client = Google::Cloud::Translate.new({ :version => :v2 })
+    
+    @languages = gt_client.languages("en")
 
     render({ :template => "babel_templates/translate_form.html.erb" })
   end

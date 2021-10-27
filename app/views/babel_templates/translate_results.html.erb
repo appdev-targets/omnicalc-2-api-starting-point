@@ -1,10 +1,10 @@
 <h1>Translation</h1>
 
 <dl>
-  <dt>Original</dt>
+  <dt>Original text:</dt>
   <dd><%= @user_text %></dd>
 
-  <dt>Translated</dt>
+  <dt>Translated into <%= @target_lang %>:</dt>
   <dd>
     <p><%= @translated_text %></p>
   
@@ -13,3 +13,5 @@
     <% end %>
   </dd>
 </dl>
+
+<a href="/muggle_translate">Translate something else</a>
