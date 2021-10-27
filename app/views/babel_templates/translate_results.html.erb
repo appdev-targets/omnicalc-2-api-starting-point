@@ -5,5 +5,11 @@
   <dd><%= @user_text %></dd>
 
   <dt>Translated</dt>
-  <dd><%= @translated_text %></dd>
+  <dd>
+    <p><%= @translated_text %></p>
+  
+    <% if @recipient_number.present? %>
+      <small>Sent to <%= @recipient_number %>.</small>
+    <% end %>
+  </dd>
 </dl>
