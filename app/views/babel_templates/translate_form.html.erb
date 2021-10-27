@@ -1,1 +1,23 @@
 <h1>New translation</h1>
+
+<form action="/wizard_translate">
+  <div>
+    <label for="text_field">Text to translate:</label>
+    
+    <textarea id="text_field" name="original_text"></textarea>
+  </div>
+
+  <div>
+    <label for="language_field">Language to translate into:</label>
+
+    <%# How do we create a dropdown of available languages? %>
+  </div>
+
+  <div>
+    <label for="phone_field">SMS translation to:</label>
+    
+    <input id="phone_field" name="send_to">
+  </div>
+
+  <button>Translate!</button>
+</form>
